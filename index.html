@@ -9,21 +9,24 @@
 
   <!-- Application styles. -->
   <!-- build:[href] /styles.min.css -->
-  <link rel="stylesheet" href="app/styles/index.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="app/styles/main.css">
   <!-- /build -->
 </head>
 
 <body>
   <!-- Application container. -->
   <main role="main" id="main" class="main-container">
-
+    <ul class="image-list clearfix">
+      <!-- <li>Test</li> -->
+    </ul>
   </main>
 
   <!-- templates -->
+  
+
   <script type="text/template" id="image-template">
-    <div class="image-container">
       <img src = <%= src %> />
-    </div>
   </script>
 
   <!-- Application source. -->

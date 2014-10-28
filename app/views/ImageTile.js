@@ -1,9 +1,8 @@
 define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection'], function(_, Backbone, ImageModel, ImageCollection) {
 
-  var ImageView = Backbone.View.extend({
-  	// tagName:  'div',
-  	el: '.main-container',
-
+  var ImageTile = Backbone.View.extend({
+  	tagName:  'li',
+  	className: 'image-container',
 	// Cache the template function for a single item.
 	template: _.template($('#image-template').html()),
 
@@ -17,15 +16,16 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection']
 	},
 
 	render: function(){
-		var dom = this.$el.html(this.template(this.model.toJSON()));
-		dom.appendTo($("#main"));
+		this.$el.html(this.template(this.model.toJSON()));
+		// dom.appendTo($("#main"));
+		return this;
 	},
 
 	clickHandler: function(){
-		console.log("clicked");
+		console.log("image tile clicked");
 	}
 
   });
 
-  return ImageView;
+  return ImageTile;
 });
