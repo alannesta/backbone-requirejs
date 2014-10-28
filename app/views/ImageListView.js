@@ -11,24 +11,27 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 		'click': 'clickHandler'
 	},
 
+	images: [],
+
 	initialize: function(){
 		console.log('image list init');
-		var images = new ImageCollection;
-		this.listenTo(images, 'add', this.addOne);
-		this.listenTo(images, 'all', this.render);
+		this.images = new ImageCollection;
+		this.listenTo(this.images, 'add', this.addOne);
+		this.listenTo(this.images, 'all', this.render);
 		
 		var image1 = new ImageModel({src: "app/img/1.JPG"});
 		var image2 = new ImageModel({src: "app/img/2.JPG"});
 		var image3 = new ImageModel({src: "app/img/3.JPG"});
 		var image4 = new ImageModel({src: "app/img/4.JPG"});
 		var image5 = new ImageModel({src: "app/img/5.JPG"});
+		var image6 = new ImageModel({src: "app/img/0.png"});
+		var image7 = new ImageModel({src: "app/img/1.png"});
 
-		// images.add([image1, image2, image3, image4, image5]);
-		images.add(image1);
-		images.add(image2);
-		images.add(image3);
-		images.add(image4);
-		images.add(image5);
+		var imgArr = [image1, image2, image3, image6, image5, image7, image4];
+
+		this.images.add(imgArr);
+		// this.images.add(imgArr.shuffle());
+		console.log(this.images);
 
 		// this.render();
 	},
@@ -53,6 +56,16 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 
 	clickHandler: function(){
 		console.log("image list clicked");
+		var image1 = new ImageModel({src: "app/img/1.JPG"});
+		var image2 = new ImageModel({src: "app/img/2.JPG"});
+		var image3 = new ImageModel({src: "app/img/3.JPG"});
+		var image4 = new ImageModel({src: "app/img/4.JPG"});
+		var image5 = new ImageModel({src: "app/img/5.JPG"});
+		var image6 = new ImageModel({src: "app/img/0.png"});
+		var image7 = new ImageModel({src: "app/img/1.png"});
+		var imgArr = [image1, image2, image3, image6, image5, image7, image4];
+
+		this.images.add(imgArr.shuffle());
 	}
 
   });

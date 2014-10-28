@@ -6,9 +6,10 @@ define(
   'models/ImageModel',
   'models/ImageCollection',
   'views/ImageTile',
-  'views/ImageListView'
+  'views/ImageListView',
+  'util'
   ],
-  function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView) {
+  function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView, Util) {
   // Defining the application router.
   var Router = Backbone.Router.extend({
     routes: {
