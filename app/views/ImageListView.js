@@ -13,34 +13,34 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 
 	images: [],
 
+	imageDoms: [],
+
 	initialize: function(){
-		console.log('image list init');
 		this.images = new ImageCollection;
 		this.listenTo(this.images, 'add', this.addOne);
-		this.listenTo(this.images, 'all', this.render);
+		this.listenTo(this.images, 'reset', this.resetHandler);
 		
 		var image1 = new ImageModel({src: "app/img/1.JPG"});
 		var image2 = new ImageModel({src: "app/img/2.JPG"});
 		var image3 = new ImageModel({src: "app/img/3.JPG"});
 		var image4 = new ImageModel({src: "app/img/4.JPG"});
 		var image5 = new ImageModel({src: "app/img/5.JPG"});
-		var image6 = new ImageModel({src: "app/img/0.png"});
-		var image7 = new ImageModel({src: "app/img/1.png"});
-
-		var imgArr = [image1, image2, image3, image6, image5, image7, image4];
+		var image6 = new ImageModel({src: "app/img/6.JPG"});
+		var image7 = new ImageModel({src: "app/img/0.png"});
+		var imgArr = [image1, image2, image3, image6, image5, image4, image7];
 
 		this.images.add(imgArr);
-		// this.images.add(imgArr.shuffle());
-		console.log(this.images);
-
-		// this.render();
+		this.images.reset();
+		// this.waterFall(null, 'li');
 	},
 
 	render: function(){
-		// this.$el.html(this.template(this.model.toJSON()));
-		// dom.appendTo($("#main"));
-		console.log('image list render');
-		this.$el.show();
+		
+		// this.waterFall(null, '.image-list li');
+	},
+
+	resetHandler: function(){
+		this.waterFall(null, 'li');
 	},
 
 	addOne: function(image){
@@ -49,23 +49,59 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 		});
 
 		this.$el.append(imageTile.render().el);
-		// this.$el.append($('<div>Test</div>'));
 
 	},
 
-
 	clickHandler: function(){
-		console.log("image list clicked");
+
 		var image1 = new ImageModel({src: "app/img/1.JPG"});
 		var image2 = new ImageModel({src: "app/img/2.JPG"});
 		var image3 = new ImageModel({src: "app/img/3.JPG"});
 		var image4 = new ImageModel({src: "app/img/4.JPG"});
 		var image5 = new ImageModel({src: "app/img/5.JPG"});
-		var image6 = new ImageModel({src: "app/img/0.png"});
-		var image7 = new ImageModel({src: "app/img/1.png"});
-		var imgArr = [image1, image2, image3, image6, image5, image7, image4];
+		var image6 = new ImageModel({src: "app/img/6.JPG"});
+		var image7 = new ImageModel({src: "app/img/0.png"});
+		// var image7 = new ImageModel({src: "app/img/1.png"});
+		var imgArr = [image1, image2, image3, image6, image5, image4, image7];
 
 		this.images.add(imgArr.shuffle());
+		this.images.reset();
+	},
+
+	waterFall: function(parent, selector){
+		//TODO: check whether parent is a dom object
+
+		var that = this;
+		var heightCounter = {}	
+		var windowWidth = $(window).width(); 
+		// var eleWidth = $('li').width();
+		var eleWidth = document.getElementsByTagName('li')[0].offsetWidth;
+		// console.log(eleWidth);
+		var tilesperLine = Math.floor(windowWidth/eleWidth);
+		// console.log(tilesperLine);
+		that.imageDoms = [];
+
+		$(selector).each(function(index){
+		
+			var key = index%tilesperLine;
+			if (heightCounter[key] != undefined){
+				console.log(that.imageDoms[index-tilesperLine].offsetHeight);
+				heightCounter[key] += that.imageDoms[index-tilesperLine].offsetHeight;
+			}else{
+				heightCounter[key] = 0;
+			}
+			
+			$(this).css({
+				"position": "absolute",
+				"left": key*eleWidth,
+				"top": heightCounter[key]
+			});
+
+			that.imageDoms.push(this);
+		})
+		// console.log(that.imageDoms);
+
+
 	}
 
   });
