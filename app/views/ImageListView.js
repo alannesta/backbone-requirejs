@@ -30,13 +30,15 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 		var imgArr = [image1, image2, image3, image6, image5, image4, image7];
 
 		this.images.add(imgArr);
-		this.images.reset();
-		// this.waterFall(null, 'li');
+		// this.images.reset();	//fire the collection reset event;
+
 	},
 
 	render: function(){
-		
-		// this.waterFall(null, '.image-list li');
+		if (this.images.length>0){
+			this.waterFall(null, 'li');
+		}
+		console.log('render called');
 	},
 
 	resetHandler: function(){
@@ -44,12 +46,12 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 	},
 
 	addOne: function(image){
+		console.log("add one");
 		var imageTile = new ImageTile({
 			model: image
 		});
 
 		this.$el.append(imageTile.render().el);
-
 	},
 
 	clickHandler: function(){
