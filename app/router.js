@@ -1,9 +1,11 @@
-define(function(require, exports, module) {
-  "use strict";
-
-  // External dependencies.
-  var Backbone = require("backbone");
-
+define(
+  [
+  'jquery',
+  'underscore',
+  'backbone',
+  'models/ImageModel',
+  ],
+  function($, _, Backbone) {
   // Defining the application router.
   var Router = Backbone.Router.extend({
     routes: {
@@ -13,7 +15,15 @@ define(function(require, exports, module) {
     main: function() {
       console.log("Welcome to your route.");
     }
+
   });
 
-  module.exports = Router;
+  var init = function(){
+    var app_router = new Router;
+    Backbone.history.start();
+  }
+
+  return{
+    init: init
+  }
 });
