@@ -3,7 +3,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 
     // Default attributes for the todo.
     defaults: {
-      src: "loading.png"
+      src: "app/img/loading.png"
     },
 
     // Ensure that each todo created has `content`.
