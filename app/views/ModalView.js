@@ -24,6 +24,7 @@ define(['underscore', 'backbone', 'jquery'], function(_, Backbone, $) {
         }
         var dom = this.$el.html(this.template(modal));
 		dom.appendTo($("body"));
+		dom.show();
 		return this;
 	},
 

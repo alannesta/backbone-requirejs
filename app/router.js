@@ -40,7 +40,7 @@ define(
     })
 
     dispatcher.on("showmodal", function(){
-      console.log("show modal");
+      console.log("show modal event fired");
       var modal = new ModalView
     })
 
