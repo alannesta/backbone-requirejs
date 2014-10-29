@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection'], function(_, Backbone, ImageModel, ImageCollection) {
+define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection', 'dispatcher'], function(_, Backbone, ImageModel, ImageCollection, dispatcher) {
 
   var ImageTile = Backbone.View.extend({
   	tagName:  'li',
@@ -23,6 +23,7 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection']
 
 	clickHandler: function(){
 		console.log("image tile clicked");
+		dispatcher.trigger('showmodal');
 	}
 
   });

@@ -7,9 +7,13 @@ define(
   'models/ImageCollection',
   'views/ImageTile',
   'views/ImageListView',
+  'views/ModalView',
+  'dispatcher',
   'util'
   ],
-  function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView, Util) {
+  function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView, ModalView, dispatcher,Util) {
+
+
   // Defining the application router.
   var Router = Backbone.Router.extend({
     routes: {
@@ -30,9 +34,14 @@ define(
       // var imageTile = new imageModel;
       // var imageView = new imageList({
       //   model: imageTile
-      // })
+      // })6814033999958531
       var listView = new ImageListView
 
+    })
+
+    dispatcher.on("showmodal", function(){
+      console.log("show modal");
+      var modal = new ModalView
     })
 
     Backbone.history.start();

@@ -4,8 +4,6 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
   	// tagName:  'div',
   	el: '.image-list',
 
-	// Cache the template function for a single item.
-
 	// The DOM events specific to an item.
 	events: {
 		'click': 'clickHandler'
@@ -30,23 +28,23 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 		var imgArr = [image1, image2, image3, image6, image5, image4, image7];
 
 		this.images.add(imgArr);
-		// this.images.reset();	//fire the collection reset event;
+		this.images.reset();	//fire the collection reset event;
 
 	},
+
 
 	render: function(){
 		if (this.images.length>0){
-			this.waterFall(null, 'li');
+			this.waterFall('.image-list', '.image-list li');
 		}
-		console.log('render called');
 	},
 
 	resetHandler: function(){
-		this.waterFall(null, 'li');
+		this.waterFall('.image-list', '.image-list li');
 	},
 
 	addOne: function(image){
-		console.log("add one");
+		// console.log("add one");
 		var imageTile = new ImageTile({
 			model: image
 		});
@@ -70,24 +68,24 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 		this.images.reset();
 	},
 
-	waterFall: function(parent, selector){
+	waterFall: function(parent, child){
 		//TODO: check whether parent is a dom object
 
 		var that = this;
 		var heightCounter = {}	
-		var windowWidth = $(window).width(); 
-		// var eleWidth = $('li').width();
-		var eleWidth = document.getElementsByTagName('li')[0].offsetWidth;
+		var windowWidth = $(parent).width(); 
+		var eleWidth = $(child)[0].offsetWidth;
+		// var eleWidth = document.getElementsByTagName('li')[0].offsetWidth;
 		// console.log(eleWidth);
 		var tilesperLine = Math.floor(windowWidth/eleWidth);
 		// console.log(tilesperLine);
 		that.imageDoms = [];
 
-		$(selector).each(function(index){
+		$(child).each(function(index){
 		
 			var key = index%tilesperLine;
 			if (heightCounter[key] != undefined){
-				console.log(that.imageDoms[index-tilesperLine].offsetHeight);
+				// console.log(that.imageDoms[index-tilesperLine].offsetHeight);
 				heightCounter[key] += that.imageDoms[index-tilesperLine].offsetHeight;
 			}else{
 				heightCounter[key] = 0;
@@ -102,8 +100,6 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 			that.imageDoms.push(this);
 		})
 		// console.log(that.imageDoms);
-
-
 	}
 
   });
