@@ -1,0 +1,54 @@
+/*-- Pure CSS (http://purecss.io/). -----------------------------------------*/
+
+@import "../../bower_components/pure/pure.css";
+
+/*-- Application stylesheets. -----------------------------------------------*/
+
+ul{
+	margin: 0px;
+	padding: 0px;
+}
+
+li{
+	
+}
+
+.image-container{
+	padding: 5px;
+	width: 300px;
+	height: auto;
+	float: left;
+	-webkit-box-sizing: border-box;
+}
+
+.image-container img{
+	width: 100%;
+	height: auto;
+}
+
+.image-list{
+	list-style: none;
+	position: relative;
+}
+
+.modal{
+	position: absolute;
+	width: 40%;
+	left: 50%;
+	margin-left: -20%;
+	top: 30%;
+	z-index: 999;
+	/*height: 400px;*/
+	/*display: block;*/
+}
+
+.modal-header{
+	background-color: green;
+}
+
+.modal-body{
+	background-color: grey;
+}
+.modal-footer{
+	background-color: red;
+}
