@@ -13,35 +13,47 @@ define(
   ],
   function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView, ModalView, dispatcher,Util) {
 
-
+  var appView;
   // Defining the application router.
   var Router = Backbone.Router.extend({
     routes: {
-      "": "main"
+      "": "main",
+      "confirm": "confirm"
     },
 
     main: function() {
-      console.log("main route init");
+      console.log("init");
+      appView = new ImageListView
+    },
+
+    confirm: function(){
+      console.log("navigate to confirm page");
+      // appView.$el.remove('.image-container');
+      appView.$el.empty();
     }
 
   });
 
   var init = function(){
     var app_router = new Router;
+    
 
     app_router.on("route:main", function(){
-      console.log("init app");
-      // var imageTile = new imageModel;
-      // var imageView = new imageList({
-      //   model: imageTile
-      // })6814033999958531
-      var listView = new ImageListView
+       
+    })
+
+    app_router.on("route:confirm", function(){
 
     })
 
     dispatcher.on("showmodal", function(){
-      console.log("show modal event fired");
+      console.log("show modal event dispatched");
       var modal = new ModalView
+    })
+
+    dispatcher.on("modalview:confirm", function(args){
+      // console.log(args.data);
+      app_router.navigate(args.data,{trigger: true});
     })
 
     Backbone.history.start();

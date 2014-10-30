@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'jquery'], function(_, Backbone, $) {
+define(['underscore', 'backbone', 'jquery', 'dispatcher'], function(_, Backbone, $, dispatcher) {
 
   var ModalView = Backbone.View.extend({
   	tagName:  'div',
@@ -9,7 +9,8 @@ define(['underscore', 'backbone', 'jquery'], function(_, Backbone, $) {
 
 	// The DOM events specific to an item.
 	events: {
-		// 'click': 'clickHandler'
+		'click button.confirm': 'confirmHandler',
+		'click button.cancel': 'cancelHandler'
 	},
 
 	initialize: function(){
@@ -20,7 +21,8 @@ define(['underscore', 'backbone', 'jquery'], function(_, Backbone, $) {
 		var modal = {
           title: "Are you sure?",
           body: "Please Select",
-          footer: "<button class='btn btn-large'>Confirm</button>"
+          footer: "<button class='btn btn-large confirm'>Confirm</button>"+
+          "<button class='btn btn-large cancel'>Cancel</button>"
         }
         var dom = this.$el.html(this.template(modal));
 		dom.appendTo($("body"));
@@ -28,8 +30,19 @@ define(['underscore', 'backbone', 'jquery'], function(_, Backbone, $) {
 		return this;
 	},
 
-	clickHandler: function(){
-		console.log("image tile clicked");
+	destroy: function(){
+		this.$el.remove();
+	},
+
+	confirmHandler: function(){
+		// console.log('confirm button clicked');
+		dispatcher.trigger("modalview:confirm", {data: "confirm"})
+		this.destroy();
+	},
+
+	cancelHandler: function(){
+		console.log('cancel button clicked');
+		this.destroy();
 	}
 
   });
