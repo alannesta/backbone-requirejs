@@ -22,7 +22,7 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 	},
 
 	clickHandler: function(){
-		dispatcher.trigger('showmodal');
+		// dispatcher.trigger('showmodal');
 	}
 
   });

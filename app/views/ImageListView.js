@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection', 'views/ImageTile'], function(_, Backbone, ImageModel, ImageCollection, ImageTile) {
+define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection', 'views/ImageTile', 'dispatcher'], function(_, Backbone, ImageModel, ImageCollection, ImageTile, dispatcher) {
 
   var ImageList = Backbone.View.extend({
   	// tagName:  'div',
@@ -9,12 +9,11 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 		'click': 'clickHandler'
 	},
 
-	images: [],
-
-	imageDoms: [],
-
 	initialize: function(){
+		
 		this.images = new ImageCollection;
+		this.clicked = false;
+
 		this.listenTo(this.images, 'add', this.addOne);
 		this.listenTo(this.images, 'reset', this.resetHandler);
 		
@@ -53,19 +52,33 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 	},
 
 	clickHandler: function(){
+		var that = this
+		if (this.clicked){
+			return
+		}
 
-		var image1 = new ImageModel({src: "app/img/1.JPG"});
-		var image2 = new ImageModel({src: "app/img/2.JPG"});
-		var image3 = new ImageModel({src: "app/img/3.JPG"});
-		var image4 = new ImageModel({src: "app/img/4.JPG"});
-		var image5 = new ImageModel({src: "app/img/5.JPG"});
-		var image6 = new ImageModel({src: "app/img/6.JPG"});
-		var image7 = new ImageModel({src: "app/img/0.png"});
-		// var image7 = new ImageModel({src: "app/img/1.png"});
-		var imgArr = [image1, image2, image3, image6, image5, image4, image7];
+		dispatcher.trigger('showmodal');
+		this.clicked = true;
+		dispatcher.on("modalview:confirm", function(args){
+      		var image1 = new ImageModel({src: "app/img/1.JPG"});
+			var image2 = new ImageModel({src: "app/img/2.JPG"});
+			var image3 = new ImageModel({src: "app/img/3.JPG"});
+			var image4 = new ImageModel({src: "app/img/4.JPG"});
+			var image5 = new ImageModel({src: "app/img/5.JPG"});
+			var image6 = new ImageModel({src: "app/img/6.JPG"});
+			var image7 = new ImageModel({src: "app/img/0.png"});
+			// var image7 = new ImageModel({src: "app/img/1.png"});
+			var imgArr = [image1, image2, image3, image6, image5, image4, image7];
 
-		this.images.add(imgArr.shuffle());
-		this.images.reset();
+			that.images.add(imgArr.shuffle());
+			that.images.reset();
+			that.clicked = false;
+    	})
+
+    	dispatcher.on("modalview:cancel", function(args){
+    		that.clicked = false;
+    	})
+		
 	},
 
 	waterFall: function(parent, child){

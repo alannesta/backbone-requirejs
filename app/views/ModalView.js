@@ -16,7 +16,7 @@ define(['underscore', 'backbone', 'jquery', 'dispatcher'], function(_, Backbone,
 	// new View will call the initialize function, other stuff remains unchanged
 	initialize: function(){
 		this.topics = {}	//only define instance variables in the initialize function?
-		
+
 		// this.onFire("confirm", function(){
 		// 	console.log("confirm fired");
 		// }).onFire("cancel", function(){
@@ -52,18 +52,22 @@ define(['underscore', 'backbone', 'jquery', 'dispatcher'], function(_, Backbone,
 
 	fire: function(topic, args){
 		// console.log(this.topics);
-		for (var i = 0; i<this.topics[topic].length; i++){
-			this.topics[topic][i].call(this, args);
+		if (this.topics[topic]&&this.topics[topic].length>0){
+			for (var i = 0; i<this.topics[topic].length; i++){
+				this.topics[topic][i].call(this, args);
+			}
 		}
+		
 	},
 
 	confirmHandler: function(){
-		// dispatcher.trigger("modalview:confirm", {data: "confirm"})
+		dispatcher.trigger("modalview:confirm", {data: "confirm"})
 		this.fire("confirm");
 		this.destroy();
 	},
 
 	cancelHandler: function(){
+		dispatcher.trigger("modalview:cancel", {data: "confirm"})
 		this.fire("cancel");
 		this.destroy();
 	}
