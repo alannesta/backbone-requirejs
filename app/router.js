@@ -48,6 +48,13 @@ define(
     dispatcher.on("showmodal", function(){
       // console.log("show modal event dispatched");
       var modal = new ModalView
+      modal.onFire("confirm", function(){
+        console.log("confirm fired");
+      }).onFire("cancel", function(){
+        console.log("cancel fired");
+      }).onFire("confirm", function(){
+        console.log("2nd confirm");
+      })
     })
 
     dispatcher.on("modalview:confirm", function(args){

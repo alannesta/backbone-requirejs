@@ -13,19 +13,17 @@ define(['underscore', 'backbone', 'jquery', 'dispatcher'], function(_, Backbone,
 		'click button.cancel': 'cancelHandler'
 	},
 
-	topics: {},
-
 	// new View will call the initialize function, other stuff remains unchanged
 	initialize: function(){
-		this.topics = {}
-		console.log(this.test);
-		this.onFire("confirm", function(){
-			console.log("confirm fired");
-		}).onFire("cancel", function(){
-			console.log("cancel fired");
-		}).onFire("confirm", function(){
-			console.log("2nd confirm");
-		})
+		this.topics = {}	//only define instance variables in the initialize function?
+		
+		// this.onFire("confirm", function(){
+		// 	console.log("confirm fired");
+		// }).onFire("cancel", function(){
+		// 	console.log("cancel fired");
+		// }).onFire("confirm", function(){
+		// 	console.log("2nd confirm");
+		// })
 		this.render();
 	},
 
