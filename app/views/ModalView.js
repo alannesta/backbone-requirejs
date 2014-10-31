@@ -13,7 +13,19 @@ define(['underscore', 'backbone', 'jquery', 'dispatcher'], function(_, Backbone,
 		'click button.cancel': 'cancelHandler'
 	},
 
+	topics: {},
+
+	// new View will call the initialize function, other stuff remains unchanged
 	initialize: function(){
+		this.topics = {}
+		console.log(this.test);
+		this.onFire("confirm", function(){
+			console.log("confirm fired");
+		}).onFire("cancel", function(){
+			console.log("cancel fired");
+		}).onFire("confirm", function(){
+			console.log("2nd confirm");
+		})
 		this.render();
 	},
 
@@ -31,17 +43,30 @@ define(['underscore', 'backbone', 'jquery', 'dispatcher'], function(_, Backbone,
 	},
 
 	destroy: function(){
-		this.$el.remove();
+		this.remove();
+	},
+
+	onFire: function(topic, callback){
+		this.topics[topic] = this.topics[topic] || [];
+		this.topics[topic].push(callback);
+		return this;
+	},
+
+	fire: function(topic, args){
+		// console.log(this.topics);
+		for (var i = 0; i<this.topics[topic].length; i++){
+			this.topics[topic][i].call(this, args);
+		}
 	},
 
 	confirmHandler: function(){
-		// console.log('confirm button clicked');
-		dispatcher.trigger("modalview:confirm", {data: "confirm"})
+		// dispatcher.trigger("modalview:confirm", {data: "confirm"})
+		this.fire("confirm");
 		this.destroy();
 	},
 
 	cancelHandler: function(){
-		console.log('cancel button clicked');
+		this.fire("cancel");
 		this.destroy();
 	}
 

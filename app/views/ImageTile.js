@@ -22,7 +22,6 @@ define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection',
 	},
 
 	clickHandler: function(){
-		console.log("image tile clicked");
 		dispatcher.trigger('showmodal');
 	}
 

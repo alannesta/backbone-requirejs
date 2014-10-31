@@ -22,7 +22,6 @@ define(
     },
 
     main: function() {
-      console.log("init");
       appView = new ImageListView
     },
 
@@ -47,7 +46,7 @@ define(
     })
 
     dispatcher.on("showmodal", function(){
-      console.log("show modal event dispatched");
+      // console.log("show modal event dispatched");
       var modal = new ModalView
     })
 
