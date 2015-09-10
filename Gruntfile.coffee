@@ -12,8 +12,6 @@ module.exports = ->
   # When running the default Grunt command, just lint the code.
   @registerTask "default", [
     "clean"
-    "jshint"
-    "karma:run"
     "processhtml"
     "copy"
     "requirejs"
