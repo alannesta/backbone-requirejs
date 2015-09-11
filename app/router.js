@@ -3,13 +3,13 @@ define(
   'jquery',
   'underscore',
   'backbone',
-  'models/ImageModel',
-  'models/ImageCollection',
-  'views/ImageTile',
-  'views/ImageListView',
-  'views/ModalView',
-  'dispatcher',
-  'util'
+  './models/ImageModel',
+  './models/ImageCollection',
+  './views/ImageTile',
+  './views/ImageListView',
+  './views/ModalView',
+  './EventDispatcher',
+  './util'
   ],
   function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView, ModalView, dispatcher,Util) {
 

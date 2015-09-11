@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', "models/ImageModel"], function(_, Backbone, ImageModel) {
+define(['underscore', 'backbone', "./ImageModel"], function(_, Backbone, ImageModel) {
 
   var ImageCollection = Backbone.Collection.extend({
     model: ImageModel

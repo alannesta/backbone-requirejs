@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'jquery', 'dispatcher'], function(_, Backbone, $, dispatcher) {
+define(['underscore', 'backbone', 'jquery', '../EventDispatcher'], function(_, Backbone, $, dispatcher) {
 
   var ModalView = Backbone.View.extend({
   	tagName:  'div',

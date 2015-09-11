@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'models/ImageModel', 'models/ImageCollection', 'views/ImageTile', 'dispatcher'], function(_, Backbone, ImageModel, ImageCollection, ImageTile, dispatcher) {
+define(['underscore', 'backbone', '../models/ImageModel', '../models/ImageCollection', './ImageTile', '../EventDispatcher'], function(_, Backbone, ImageModel, ImageCollection, ImageTile, dispatcher) {
 
   var ImageList = Backbone.View.extend({
   	// tagName:  'div',
