@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', '../models/ImageModel', '../models/ImageCollection', './ImageTile', '../EventDispatcher'], function(_, Backbone, ImageModel, ImageCollection, ImageTile, dispatcher) {
+define(['underscore', 'jquery', 'backbone', '../models/ImageModel', '../models/ImageCollection', './ImageTile', '../EventDispatcher'], function(_, $, Backbone, ImageModel, ImageCollection, ImageTile, dispatcher) {
 
   var ImageList = Backbone.View.extend({
   	// tagName:  'div',
@@ -52,7 +52,7 @@ define(['underscore', 'backbone', '../models/ImageModel', '../models/ImageCollec
 	},
 
 	clickHandler: function(){
-		var that = this
+		var that = this;
 		if (this.clicked){
 			return
 		}
@@ -85,7 +85,7 @@ define(['underscore', 'backbone', '../models/ImageModel', '../models/ImageCollec
 		//TODO: check whether parent is a dom object
 
 		var that = this;
-		var heightCounter = {}	
+		var heightCounter = {};
 		var windowWidth = $(parent).width(); 
 		var eleWidth = $(child)[0].offsetWidth;
 		// var eleWidth = document.getElementsByTagName('li')[0].offsetWidth;

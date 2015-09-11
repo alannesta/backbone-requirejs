@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', '../models/ImageModel', '../models/ImageCollection', '../EventDispatcher'], function(_, Backbone, ImageModel, ImageCollection, dispatcher) {
+define(['underscore', 'jquery', 'backbone', '../models/ImageModel', '../models/ImageCollection', '../EventDispatcher'], function(_, $, Backbone, ImageModel, ImageCollection, dispatcher) {
 
   var ImageTile = Backbone.View.extend({
   	tagName:  'li',

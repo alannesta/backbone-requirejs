@@ -39,25 +39,25 @@ define(
 
     app_router.on("route:main", function(){
        
-    })
+    });
 
     app_router.on("route:confirm", function(){
 
-    })
+    });
 
     dispatcher.on("showmodal", function(){
       // console.log("show modal event dispatched");
       
       var modal = new ModalView
-    })
+    });
 
     dispatcher.on("modalview:confirm", function(args){
       // console.log(args.data);
       // app_router.navigate(args.data,{trigger: true});
-    })
+    });
 
     Backbone.history.start();
-  }
+  };
 
   return{
     init: init
