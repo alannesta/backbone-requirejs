@@ -17,8 +17,8 @@ define(['underscore', 'jquery', 'backbone', '../models/ImageModel', '../models/I
 		this.listenTo(this.images, 'add', this.addOne);
 		this.listenTo(this.images, 'reset', this.resetHandler);
 		
-		var image1 = new ImageModel({src: "app/img/1.JPG"});
-		var image2 = new ImageModel({src: "app/img/2.JPG"});
+		var image1 = new ImageModel({src: require("../img/1.JPG")});
+		var image2 = new ImageModel({src: require("../img/2.JPG")});
 		var image3 = new ImageModel({src: "app/img/3.JPG"});
 		var image4 = new ImageModel({src: "app/img/4.JPG"});
 		var image5 = new ImageModel({src: "app/img/5.JPG"});
