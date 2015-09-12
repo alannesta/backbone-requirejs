@@ -9,10 +9,6 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             loader: 'babel-loader'
-        },
-            {
-                test: /\.JPG$/,
-                loader: 'file'
-            }]
+        }]
     }
 };

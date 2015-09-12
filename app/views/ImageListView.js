@@ -17,13 +17,19 @@ define(['underscore', 'jquery', 'backbone', '../models/ImageModel', '../models/I
 		this.listenTo(this.images, 'add', this.addOne);
 		this.listenTo(this.images, 'reset', this.resetHandler);
 		
-		var image1 = new ImageModel({src: require("../img/1.JPG")});
-		var image2 = new ImageModel({src: require("../img/2.JPG")});
-		var image3 = new ImageModel({src: "app/img/3.JPG"});
-		var image4 = new ImageModel({src: "app/img/4.JPG"});
-		var image5 = new ImageModel({src: "app/img/5.JPG"});
-		var image6 = new ImageModel({src: "app/img/6.JPG"});
-		var image7 = new ImageModel({src: "app/img/0.png"});
+		var image1 = new ImageModel({src: require("file?name=img/1.JPG!../img/1.jpg")});
+		var image2 = new ImageModel({src: require("file?name=img/2.JPG!../img/2.jpg")});
+		var image3 = new ImageModel({src: require("file?name=img/3.JPG!../img/3.jpg")});
+		var image4 = new ImageModel({src: require("file?name=img/4.JPG!../img/4.jpg")});
+		var image5 = new ImageModel({src: require("file?name=img/5.JPG!../img/5.jpg")});
+		var image6 = new ImageModel({src: require("file?name=img/6.JPG!../img/6.jpg")});
+		var image7 = new ImageModel({src: require("file?name=img/0.png!../img/0.png")});
+		//var image2 = new ImageModel({src: "app/img/2.JPG"});
+		//var image3 = new ImageModel({src: "app/img/3.JPG"});
+		//var image4 = new ImageModel({src: "app/img/4.JPG"});
+		//var image5 = new ImageModel({src: "app/img/5.JPG"});
+		//var image6 = new ImageModel({src: "app/img/6.JPG"});
+		//var image7 = new ImageModel({src: "app/img/0.png"});
 		var imgArr = [image1, image2, image3, image6, image5, image4, image7];
 
 		this.images.add(imgArr);
@@ -60,14 +66,14 @@ define(['underscore', 'jquery', 'backbone', '../models/ImageModel', '../models/I
 		dispatcher.trigger('showmodal');
 		this.clicked = true;
 		dispatcher.on("modalview:confirm", function(args){
-      		var image1 = new ImageModel({src: "app/img/1.JPG"});
-			var image2 = new ImageModel({src: "app/img/2.JPG"});
-			var image3 = new ImageModel({src: "app/img/3.JPG"});
-			var image4 = new ImageModel({src: "app/img/4.JPG"});
-			var image5 = new ImageModel({src: "app/img/5.JPG"});
-			var image6 = new ImageModel({src: "app/img/6.JPG"});
-			var image7 = new ImageModel({src: "app/img/0.png"});
-			// var image7 = new ImageModel({src: "app/img/1.png"});
+			var image1 = new ImageModel({src: require("file?name=img/1.JPG!../img/1.jpg")});
+			var image2 = new ImageModel({src: require("file?name=img/2.JPG!../img/2.jpg")});
+			var image3 = new ImageModel({src: require("file?name=img/3.JPG!../img/3.jpg")});
+			var image4 = new ImageModel({src: require("file?name=img/4.JPG!../img/4.jpg")});
+			var image5 = new ImageModel({src: require("file?name=img/5.JPG!../img/5.jpg")});
+			var image6 = new ImageModel({src: require("file?name=img/6.JPG!../img/6.jpg")});
+			var image7 = new ImageModel({src: require("file?name=img/0.png!../img/0.png")});
+
 			var imgArr = [image1, image2, image3, image6, image5, image4, image7];
 
 			that.images.add(imgArr.shuffle());
