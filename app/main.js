@@ -1,5 +1,5 @@
 // Kick off the application.
-require(["./router","backbone"], function(Router, Backbone) {
+require(["./router"], function(Router) {
 	
   	Router.init();
 });

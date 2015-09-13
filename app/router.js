@@ -11,7 +11,7 @@ define(
   './EventDispatcher',
   './util'
   ],
-  function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView, ModalView, dispatcher,Util) {
+  function($, _, Backbone, imageModel, ImageCollection, ImageTile, ImageListView, ModalView, dispatcher, Util) {
 
   var appView;
   // Defining the application router.
