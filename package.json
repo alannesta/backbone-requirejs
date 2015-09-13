@@ -2,28 +2,6 @@
   "name": "backbone-boilerplate",
   "version": "1.0.0",
   "devDependencies": {
-    "grunt": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-cssmin": "latest",
-    "grunt-contrib-copy": "latest",
-    "grunt-contrib-clean": "latest",
-    "grunt-contrib-requirejs": "latest",
-    "grunt-processhtml": "latest",
-    "grunt-karma": "latest",
-    "grunt-karma-coveralls": "latest",
-    "grunt-bbb-styles": "latest",
-    "grunt-bbb-server": "latest",
-    "karma-jasmine": "latest",
-    "karma-mocha": "latest",
-    "karma-qunit": "latest",
-    "karma-phantomjs-launcher": "latest",
-    "karma-coverage": "latest"
-  },
-  "scripts": {
-    "test": "grunt test coveralls"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/backbone-boilerplate/backbone-boilerplate.git"
+    
   }
 }
